@@ -1,9 +1,3 @@
-add_rules("mode.debug", "mode.release")
-set_encodings("utf-8")
-set_warnings("all")
-set_languages("cxx17")
-set_toolchains("msvc")
-
 -- 添加 Visual Studio 2026 的路径
 add_includedirs("C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.44.35207/include")
 add_includedirs("C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt")
@@ -12,18 +6,3 @@ add_includedirs("C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/um"
 add_linkdirs("C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.44.35207/lib/x64")
 add_linkdirs("C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/ucrt/x64")
 add_linkdirs("C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/um/x64")
-
-target("test")
-    set_kind("static")
-    add_defines(string.format("__XMAKE__=\"%s\"", os.scriptdir():gsub("\\", "/")))
-    add_files("learn/test.cpp")
-
-target("learn")
-    set_kind("binary")
-    add_deps("test")
-    add_files("learn/learn.cpp")
-
-target("summary")
-    set_kind("binary")
-    add_deps("test")
-    add_files("learn/summary.cpp")  
